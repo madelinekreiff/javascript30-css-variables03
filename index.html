@@ -21,18 +21,26 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    
+    /* initialize values */
+    .hl {
+      color: #ffc600;
+    }
+    img {
+      background-color: #ffc600;
+      filter: blur(10px);
+      padding: 10px;
+    }
 
-    /*
-      misc styles, nothing to do with CSS variables
-    */
+    /* misc styles, nothing to do with CSS variables */
 
     body {
-      text-align: center;
       background: #193549;
       color: white;
       font-family: 'helvetica neue', sans-serif;
-      font-weight: 100;
       font-size: 50px;
+      font-weight: 100;
+      text-align: center;
     }
 
     .controls {
@@ -45,6 +53,32 @@
   </style>
 
   <script>
+    // select all relative DOM elements
+    const spacing = document.querySelector("#spacing");
+    const blur = document.querySelector("#blur");
+    const baseColor = document.querySelector("#base");
+    const js = document.querySelector(".hl");
+    const img = document.querySelector("img");
+
+    // event listener for spacing
+    spacing.addEventListener("input", function(e) {
+      const spacingVal = e.target.value;
+      img.style.padding = `${spacingVal}px`;
+
+    });
+
+    // event listener for blur
+    blur.addEventListener("input", function(e) {
+      const blurVal = e.target.value;
+      img.style.filter = `blur(${blurVal}px)`;
+    });
+
+    // event listener for base color
+    baseColor.addEventListener("input", function(e) {
+      const baseColorVal = e.target.value;
+      js.style.color = `${baseColorVal}`;
+      img.style.backgroundColor = `${baseColorVal}`;
+    });
   </script>
 
 </body>
